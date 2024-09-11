@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function ToDoList() {
-  const [tasks, setTask] = useState([]);
+  const [tasks, setTask] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
   const [newTask, setNewTask] = useState("");
-
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
   function handleInputChange(event) {
     setNewTask(event.target.value);
   }
   function addTask() {
-    if (newTask.trim() !== "") setTask((t) => [...t, newTask]);
+    if (newTask.trim() !== "") {
+      setTask((t) => [...t, newTask]);
+    }
     setNewTask("");
   }
 
@@ -18,23 +25,23 @@ function ToDoList() {
   }
   function moveTaskUp(index) {
     if (index > 0) {
-      const updatedTask = [...tasks];
-      [updatedTask[index], updatedTask[index - 1]] = [
-        updatedTask[index - 1],
-        updatedTask[index],
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index - 1]] = [
+        updatedTasks[index - 1],
+        updatedTasks[index],
       ];
-      setTask(updatedTask);
+      setTask(updatedTasks);
     }
   }
 
   function moveTaskDown(index) {
     if (index < tasks.length - 1) {
-      const updatedTask = [...tasks];
-      [updatedTask[index], updatedTask[index + 1]] = [
-        updatedTask[index + 1],
-        updatedTask[index],
+      const updatedTasks = [...tasks];
+      [updatedTasks[index], updatedTasks[index + 1]] = [
+        updatedTasks[index + 1],
+        updatedTasks[index],
       ];
-      setTask(updatedTask);
+      setTask(updatedTasks);
     }
   }
 
