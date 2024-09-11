@@ -76,7 +76,7 @@ li {
 .text {
   flex: 1; /* O texto vai ocupar o espaço disponível */
   white-space: nowrap; /* Impede quebra de linha */
-  overflow: hidden; /* Esconde o texto que exceder o limite */
+  overflow: auto; /* Esconde o texto que exceder o limite */
   text-overflow: ellipsis; /* Mostra reticências se o texto for muito longo */
 }
 
