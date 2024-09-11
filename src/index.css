@@ -7,10 +7,12 @@ body {
   text-align: center;
   margin-top: 100px;
 }
+
 h1 {
   font-size: 4rem;
   color: white;
 }
+
 button {
   font-size: 1.7rem;
   font-weight: bold;
@@ -21,24 +23,31 @@ button {
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
+
 .add-button {
   background-color: hsl(120, 100%, 54%);
 }
+
 .add-button:hover {
   background-color: hsl(120, 100%, 44%);
 }
+
 .delete-button {
   background-color: hsl(10, 90%, 50%);
 }
+
 .delete-button:hover {
-  background-color: hsl(120, 100%, 40%);
+  background-color: hsl(10, 90%, 40%);
 }
+
 .move-button {
   background-color: hsl(207, 90%, 64%);
 }
+
 .move-button:hover {
   background-color: hsl(207, 90%, 54%);
 }
+
 input[type="text"] {
   font-size: 1.6rem;
   padding: 10px;
@@ -46,9 +55,11 @@ input[type="text"] {
   border-radius: 5px;
   color: hsl(0, 0%, 0%, 0.5);
 }
+
 ol {
   padding: 0;
 }
+
 li {
   font-size: 2rem;
   font-weight: bold;
@@ -58,14 +69,33 @@ li {
   border: 3px solid hsl(0, 0%, 85%, 0.75);
   border-radius: 5px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
+
 .text {
-  flex: 1;
+  flex: 1; /* O texto vai ocupar o espaço disponível */
+  white-space: nowrap; /* Impede quebra de linha */
+  overflow: hidden; /* Esconde o texto que exceder o limite */
+  text-overflow: ellipsis; /* Mostra reticências se o texto for muito longo */
 }
+
 .delete-button,
 .move-button {
   padding: 8px 12px;
   font-size: 1.4rem;
   margin-left: 10px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 600px) {
+  button {
+    font-size: 1.4rem;
+    padding: 6px 10px;
+  }
+
+  li {
+    font-size: 1.6rem;
+    padding: 10px;
+  }
 }
